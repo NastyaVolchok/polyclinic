@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane prefHeight="650.0" prefWidth="950.0" stylesheets="@../../static/style/stylesheets.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminMenuController">
+   <children>
+      <AnchorPane prefHeight="650.0" prefWidth="200.0" style="-fx-background-color: #da4d5b;">
+         <children>
+            <Button fx:id="butTool_report" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="14.0" layoutY="460.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Отчет">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="FILE" size="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="butTool_doctor" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="14.0" layoutY="374.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="ВРАЧИ">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER_MD" size="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="butTool_addAdmin" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="15.0" layoutY="228.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="170.0" text="Регистрация админа" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="REGISTERED" size="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="butTool_statistic" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="14.0" layoutY="503.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Статистика">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="BAR_CHART" size="18" />
+               </graphic>
+            </Button>
+            <AnchorPane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #f45d45;">
+               <children>
+                  <Label layoutX="22.0" layoutY="14.0" styleClass="label_shadow" text="ПАНЕЛЬ УПРАВЛЕНИЯ" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Button fx:id="butTool_settins" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="14.0" layoutY="546.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Настройки">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="COG" size="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="butTool_exit" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="14.0" layoutY="589.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Выход">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" size="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="butTool_patient" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="14.0" layoutY="417.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Пациетны">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="butTool__complaint_book" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="14.0" layoutY="331.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Жалобная книга">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="BOOK" size="18" />
+               </graphic>
+            </Button>
+            <FontAwesomeIconView fill="WHITE" glyphName="USER_SECRET" layoutX="56.0" layoutY="163.0" size="100" />
+            <Button fx:id="butTool_blackList" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="13.0" layoutY="287.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Черный список" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SQUARE" size="18" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="block_settins" layoutX="200.0" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: #cc434c;" visible="false">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #9d3039;">
+               <children>
+                  <Label layoutX="331.0" layoutY="14.0" text="НАСТРОЙКИ" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="15.0" layoutY="70.0" prefHeight="320.0" prefWidth="720.0" styleClass="box_groupe">
+               <children>
+                  <AnchorPane prefHeight="50.0" prefWidth="720.0" styleClass="box_groupe_second">
+                     <children>
+                        <Label layoutX="264.0" layoutY="14.0" text="Настройки вашего аккаунта" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <TextField fx:id="input_personalName" layoutX="15.0" layoutY="80.0" prefHeight="27.0" prefWidth="200.0" promptText="Введите новое имя" />
+                  <Label layoutX="15.0" layoutY="60.0" styleClass="label_signature" text="Ваше имя" />
+                  <TextField fx:id="input_personalSurname" layoutX="14.0" layoutY="140.0" prefHeight="27.0" prefWidth="200.0" promptText="Введите новую фамилию" />
+                  <Label layoutX="15.0" layoutY="120.0" styleClass="label_signature" text="Ваша фамилия" />
+                  <TextField fx:id="input_personalPatronymic" layoutX="15.0" layoutY="200.0" prefHeight="27.0" prefWidth="200.0" promptText="Введите новое отчество" />
+                  <Label layoutX="16.0" layoutY="180.0" styleClass="label_signature" text="Ваше отчество" />
+                  <TextField fx:id="input_personalStatus" editable="false" layoutX="260.0" layoutY="80.0" prefHeight="27.0" prefWidth="200.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></TextField>
+                  <Label layoutX="260.0" layoutY="60.0" styleClass="label_signature" text="Ваш статус" />
+                  <TextField fx:id="input_personalPosition" editable="false" layoutX="260.0" layoutY="140.0" prefHeight="27.0" prefWidth="200.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></TextField>
+                  <Label layoutX="260.0" layoutY="120.0" styleClass="label_signature" text="Ваша позиция" />
+                  <TextField fx:id="input_personaPhone" layoutX="260.0" layoutY="200.0" prefHeight="27.0" prefWidth="200.0" />
+                  <Label layoutX="260.0" layoutY="180.0" styleClass="label_signature" text="Ваш номер телефона" />
+                  <TextField fx:id="input_personalLogin" layoutX="492.0" layoutY="80.0" prefHeight="27.0" prefWidth="200.0" promptText="Введите новый логин" />
+                  <Label layoutX="500.0" layoutY="60.0" styleClass="label_signature" text="Ваш логин" />
+                  <TextField fx:id="input_personalPassword" layoutX="499.0" layoutY="140.0" prefHeight="27.0" prefWidth="200.0" promptText="Введите новый пароль" />
+                  <Label layoutX="500.0" layoutY="120.0" styleClass="label_signature" text="Ваш пароль" />
+                  <TextField fx:id="input_personalDateRegistration" editable="false" layoutX="500.0" layoutY="200.0" prefHeight="27.0" prefWidth="200.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></TextField>
+                  <Label layoutX="501.0" layoutY="180.0" styleClass="label_signature" text="Дата регистрации аккаунта" />
+                  <Button alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="16.0" layoutY="267.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Сохранить ">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SAVE" size="18" />
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="input_personalSeriaNumber" editable="false" layoutX="260.0" layoutY="255.0" prefHeight="27.0" prefWidth="200.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="261.0" layoutY="235.0" styleClass="label_signature" text="Серия номер паспорта" />
+                  <TextField fx:id="input_personalIDPassport" editable="false" layoutX="500.0" layoutY="255.0" prefHeight="27.0" prefWidth="200.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="501.0" layoutY="235.0" styleClass="label_signature" text="ID паспорта" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="15.0" layoutY="417.0" prefHeight="218.0" prefWidth="720.0" styleClass="box_groupe">
+               <children>
+                  <AnchorPane prefHeight="50.0" prefWidth="720.0" styleClass="box_groupe_second">
+                     <children>
+                        <Label layoutX="290.0" layoutY="14.0" prefHeight="22.0" prefWidth="139.0" text="Настройки сервера " textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="14.0" layoutY="56.0" styleClass="label_signature" text="Порт сервера" />
+                  <TextField layoutX="14.0" layoutY="74.0" prefHeight="27.0" prefWidth="690.0" promptText="Введите порт" />
+                  <Label layoutX="14.0" layoutY="145.0" styleClass="label_signature" text="IP сервера" />
+                  <TextField editable="false" layoutX="14.0" layoutY="165.0" prefHeight="27.0" prefWidth="690.0" text="lochalhost">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></TextField>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="block_report" layoutX="200.0" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: #cc434c;">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #9d3039;">
+               <children>
+                  <Label layoutX="298.0" layoutY="14.0" text="Панель сборки отчета" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Button fx:id="but_create_report" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="14.0" layoutY="206.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Собрать отчет">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PENCIL_SQUARE" size="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="but_clear_report" alignment="TOP_LEFT" graphicTextGap="16.0" layoutX="14.0" layoutY="249.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Отчистить">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="18" />
+               </graphic>
+            </Button>
+            <Button fx:id="but_save_report" alignment="TOP_LEFT" disable="true" graphicTextGap="16.0" layoutX="14.0" layoutY="292.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="Сохранить">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CLOUD_DOWNLOAD" size="18" />
+               </graphic>
+            </Button>
+            <Button alignment="TOP_LEFT" graphicTextGap="0.0" layoutX="14.0" layoutY="335.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="170.0" text="Содержимое отчета" textAlignment="CENTER" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOWN" size="18" />
+               </graphic>
+            </Button>
+            <AnchorPane layoutX="14.0" layoutY="406.0" prefHeight="230.0" prefWidth="350.0" styleClass="box_groupe" />
+            <AnchorPane layoutX="396.0" layoutY="73.0" prefHeight="562.0" prefWidth="340.0" styleClass="box_groupe">
+               <children>
+                  <TextArea fx:id="text_report" editable="false" layoutX="6.0" layoutY="14.0" prefHeight="534.0" prefWidth="327.0" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextArea>
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="block_statistic" layoutX="200.0" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: #cc434c;" visible="false">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #9d3039;">
+               <children>
+                  <Label layoutX="337.0" layoutY="14.0" text="Статистика" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="14.0" layoutY="203.0" prefHeight="270.0" prefWidth="401.0" styleClass="box_groupe">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" styleClass="shadow" text="Загруженность на текущую неделю" textFill="#f8c4cc">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <LineChart fx:id="line_chart" layoutX="14.0" layoutY="49.0" legendVisible="false" prefHeight="206.0" prefWidth="376.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="432.0" layoutY="203.0" prefHeight="270.0" prefWidth="304.0" styleClass="box_groupe">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" styleClass="shadow" text="Cоотношение врачей" textFill="#f8c4cc">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <PieChart fx:id="pieChart" clockwise="false" layoutX="-30.0" layoutY="27.0" legendVisible="false" prefHeight="247.0" prefWidth="340.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="14.0" layoutY="489.0" prefHeight="150.0" prefWidth="230.0" styleClass="box_groupe">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" styleClass="shadow" text="Врачи " textFill="#f8c4cc">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_indexDoctor" alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="44.0" prefHeight="100.0" prefWidth="138.0" text="70" textFill="#f2d8dc">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#f2d8dc" glyphName="USER_MD" layoutX="14.0" layoutY="111.0" size="50" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="503.0" layoutY="489.0" prefHeight="150.0" prefWidth="230.0" styleClass="box_groupe">
+               <children>
+                  <Label layoutX="14.0" layoutY="10.0" styleClass="shadow" text="Администрация" textFill="#f8c4cc">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_indexAdmin" alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="44.0" prefHeight="100.0" prefWidth="138.0" text="70" textFill="#f2d8dc">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#f2d8dc" glyphName="USER_SECRET" layoutX="14.0" layoutY="111.0" size="50" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="260.0" layoutY="489.0" prefHeight="150.0" prefWidth="230.0" styleClass="box_groupe">
+               <children>
+                  <Label layoutX="14.0" layoutY="9.0" styleClass="shadow" text="Клиенты поликлиники" textFill="#f8c4cc">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#f2d8dc" glyphName="USER" layoutX="14.0" layoutY="113.0" size="50" />
+                  <Label fx:id="label_indexPatient" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="44.0" prefHeight="100.0" prefWidth="138.0" text="70" textFill="#f2d8dc">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="14.0" layoutY="62.0" prefHeight="126.0" prefWidth="720.0" styleClass="box_groupe">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" styleClass="label_shadow" text="Общая загруженность" textFill="#f8c4cc">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar layoutX="62.0" layoutY="51.0" prefHeight="18.0" prefWidth="128.0" progress="0.63" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="71.0" prefHeight="50.0" prefWidth="114.0" text="70" textFill="#f2d8dc">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#f2d8dc" glyphName="LEVEL_UP" layoutX="14.0" layoutY="106.0" size="50" />
+                  <Line endX="-8.39996337890625" endY="60.40000915527344" layoutX="290.0" layoutY="53.0" startX="-8.39996337890625" startY="-41.19999694824219" stroke="WHITE" />
+                  <Label layoutX="305.0" layoutY="14.0" styleClass="shadow" text="Срединий рейтинг врачей" textFill="#f8c4cc">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#f2d8dc" glyphName="LINE_CHART" layoutX="298.0" layoutY="106.0" size="50" />
+                  <Label fx:id="label_midle_rating_policlinic" alignment="CENTER" contentDisplay="CENTER" layoutX="369.0" layoutY="60.0" prefHeight="50.0" prefWidth="114.0" text="70" textFill="#f2d8dc">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="block_client" layoutX="200.0" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: #cc434c;" visible="false">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #9d3039;">
+               <children>
+                  <Label layoutX="337.0" layoutY="14.0" text="Списки пациентов" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <TextField fx:id="input_searchPatient" layoutX="52.0" layoutY="63.0" prefHeight="27.0" prefWidth="250.0" promptText="Поиск" />
+            <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" layoutX="14.0" layoutY="86.0" size="25" />
+            <TableView fx:id="table_patirent" layoutY="100.0" prefHeight="550.0" prefWidth="750.0">
+              <columns>
+                <TableColumn fx:id="col_idPassport_patient" prefWidth="120.0" text="ID паспорта" />
+                <TableColumn fx:id="col_name_patient" prefWidth="75.0" text="Имя" />
+                  <TableColumn fx:id="col_surName_patient" prefWidth="75.0" text="Фамилия" />
+                  <TableColumn fx:id="col_patronymic_patient" prefWidth="75.0" text="Отчество" />
+                  <TableColumn fx:id="col_phone_patient" prefWidth="110.0" text="Номер телефона" />
+                  <TableColumn fx:id="col_seriaNumber_patient" prefWidth="110.0" text="Серия паспорта" />
+                  <TableColumn fx:id="col_sex_patient" prefWidth="75.0" text="Пол" />
+                  <TableColumn fx:id="col_dateBirth_patient" prefWidth="110.0" text="Дата рождения" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="block_doctrors" layoutX="200.0" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: #cc434c;" visible="false">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #9d3039;">
+               <children>
+                  <Label layoutX="306.0" layoutY="14.0" text="Врачи поликлиники" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Button fx:id="but_list_doctor" graphicTextGap="16.0" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" text="Список врачей">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="LIST" size="20" />
+               </graphic>
+            </Button>
+            <Button fx:id="but_reg_doctor" graphicTextGap="16.0" layoutX="175.0" layoutY="60.0" mnemonicParsing="false" text="Регистрация врача">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="REGISTERED" size="20" />
+               </graphic>
+            </Button>
+            <AnchorPane fx:id="block_doctors_list" layoutY="99.0" prefHeight="550.0" prefWidth="750.0">
+               <children>
+                  <TextField fx:id="input_search_doctor" layoutX="55.0" layoutY="7.0" prefHeight="27.0" prefWidth="250.0" promptText="Поиск" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" layoutX="17.0" layoutY="30.0" size="25" />
+                  <TableView fx:id="table_doctor" layoutY="44.0" prefHeight="506.0" prefWidth="750.0">
+                     <columns>
+                        <TableColumn fx:id="col_id_doctor" prefWidth="120.0" text="ID паспорта" />
+                        <TableColumn fx:id="col_name_doctor" prefWidth="75.0" text="Имя" />
+                        <TableColumn fx:id="col_sur_doctor" prefWidth="75.0" text="Фамилия" />
+                        <TableColumn fx:id="col_patronymic_doctor" prefWidth="75.0" text="Отчество" />
+                        <TableColumn fx:id="col_phone_doctor" prefWidth="110.0" text="Номер телефона" />
+                        <TableColumn fx:id="col_spetiality_doctor" prefWidth="110.0" text="Специальность" />
+                        <TableColumn fx:id="col_education_doctor" prefWidth="100.0" text="Образование" />
+                        <TableColumn fx:id="col_university_doctor" prefWidth="90.0" text="ВУЗ" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="block_doctors_registration" layoutY="99.0" prefHeight="550.0" prefWidth="750.0" visible="false">
+               <children>
+                  <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="526.0" prefWidth="720.0" styleClass="box_groupe">
+                     <children>
+                        <AnchorPane prefHeight="50.0" prefWidth="720.0" styleClass="box_groupe_second">
+                           <children>
+                              <Label layoutX="276.0" layoutY="14.0" styleClass="label_shadow" text="Бланк регистраии врача" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="12.0" layoutY="60.0" prefHeight="175.0" prefWidth="690.0" style="-fx-background-color: #a63c46;">
+                           <children>
+                              <AnchorPane prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f45d45;">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="9.0" styleClass="label_shadow" text="Общие данные врача" textFill="WHITE">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <Label layoutX="246.0" layoutY="10.0" styleClass="label_signature" text="Выберите стартовый рейтинг врача" />
+                              <Rating fx:id="regDoctor_rating" layoutX="495.0" layoutY="4.0" rating="5.0" />
+                              <Label layoutX="14.0" layoutY="53.0" styleClass="label_signature" text="Введите имя врача" />
+                              <TextField fx:id="regDoctor_name" layoutX="14.0" layoutY="75.0" prefHeight="27.0" prefWidth="200.0" />
+                              <Label layoutX="14.0" layoutY="111.0" styleClass="label_signature" text="Введите фамилию врача" />
+                              <TextField fx:id="regDoctor_surName" layoutX="14.0" layoutY="133.0" prefHeight="27.0" prefWidth="200.0" />
+                              <Label layoutX="246.0" layoutY="53.0" styleClass="label_signature" text="Введите отчество врача" />
+                              <TextField fx:id="regDoctor_patronymic" layoutX="246.0" layoutY="75.0" prefHeight="27.0" prefWidth="200.0" />
+                              <Label layoutX="246.0" layoutY="111.0" styleClass="label_signature" text="Контактный номер телефона" />
+                              <TextField fx:id="regDoctor_phone" layoutX="246.0" layoutY="133.0" prefHeight="27.0" prefWidth="200.0" />
+                              <Label layoutX="475.0" layoutY="54.0" styleClass="label_signature" text="Логин" />
+                              <TextField fx:id="reg_doctor_login" editable="false" layoutX="475.0" layoutY="75.0" prefHeight="27.0" prefWidth="200.0">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor></TextField>
+                              <Label layoutX="475.0" layoutY="111.0" styleClass="label_signature" text="Пароль" />
+                              <TextField fx:id="reg_doctor_password" editable="false" layoutX="475.0" layoutY="132.0" prefHeight="27.0" prefWidth="200.0">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor></TextField>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="12.0" layoutY="244.0" prefHeight="110.0" prefWidth="690.0" style="-fx-background-color: #a63c46;">
+                           <children>
+                              <AnchorPane prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f45d45;">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="9.0" styleClass="label_shadow" text="Паспортные данные" textFill="WHITE">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <Label layoutX="14.0" layoutY="46.0" styleClass="label_signature" text="Введите идентификационный номер паспорта" />
+                              <TextField fx:id="regDoctor_IDpassport" layoutX="14.0" layoutY="68.0" prefHeight="27.0" prefWidth="300.0" />
+                              <Label layoutX="376.0" layoutY="46.0" styleClass="label_signature" text="Введите серию и номер паспорта" />
+                              <TextField fx:id="regDoctor_seriaNumber" layoutX="376.0" layoutY="68.0" prefHeight="27.0" prefWidth="300.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="12.0" layoutY="363.0" prefHeight="110.0" prefWidth="690.0" style="-fx-background-color: #a63c46;">
+                           <children>
+                              <AnchorPane prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f45d45;">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="9.0" styleClass="label_shadow" text="Образование" textFill="WHITE">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <ComboBox fx:id="regDoctor_CBoxSpeciality" layoutX="14.0" layoutY="70.0" prefHeight="26.0" prefWidth="204.0" promptText="Выберите специальность" />
+                              <Label layoutX="14.0" layoutY="45.0" styleClass="label_signature" text="Выберите специальность врача" />
+                              <Line endX="-30.5999755859375" endY="48.5999755859375" layoutX="286.0" layoutY="52.0" startX="-30.5999755859375" startY="-37.60003662109375" stroke="WHITE" />
+                              <ComboBox fx:id="regDoctor_CBoxEducation" layoutX="294.0" layoutY="39.0" prefHeight="26.0" prefWidth="204.0" promptText="Выберите образование" />
+                              <Label layoutX="294.0" layoutY="14.0" styleClass="label_signature" text="Выберите образование" />
+                              <TextField fx:id="regDoctor_university" layoutX="294.0" layoutY="76.0" prefHeight="27.0" prefWidth="350.0" promptText="Введите название вуза" />
+                           </children>
+                        </AnchorPane>
+                        <Button fx:id="but_reg_doctorFull" graphicTextGap="16.0" layoutX="269.0" layoutY="486.0" mnemonicParsing="false" text="Зарегестрировать">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="block_complaint_book" layoutX="200.0" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: #cc434c;" visible="false">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #9d3039;">
+               <children>
+                  <Label layoutX="319.0" layoutY="14.0" text="Жалобная книга" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <ScrollPane hbarPolicy="NEVER" layoutY="50.0" prefHeight="598.0" prefWidth="750.0">
+              <content>
+                <AnchorPane fx:id="acnchorHeaderComplain" prefHeight="593.0" prefWidth="746.0">
+                     <children>
+                        <AnchorPane prefHeight="100.0" prefWidth="750.0" styleClass="box_groupe_no_radius" visible="false">
+                           <children>
+                              <FontAwesomeIconView fill="WHITE" glyphName="STAR" layoutX="667.0" layoutY="87.0" size="20" text="" />
+                              <Line endX="26.39996337890625" endY="-37.59999465942383" layoutX="574.0" layoutY="48.0" startX="26.39996337890625" startY="40.0" stroke="WHITE" />
+                              <Label layoutX="612.0" layoutY="10.0" prefHeight="43.0" prefWidth="128.0" styleClass="label_signature" text="Иван Иванов Иванович" textAlignment="CENTER" wrapText="true" />
+                              <Label layoutX="612.0" layoutY="69.0" styleClass="label_signature" text="Оценка" />
+                              <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="9.0" prefHeight="79.0" prefWidth="581.0" styleClass="label_signature" text="Описание жалобы" wrapText="true" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="block_black_list" layoutX="200.0" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: #cc434c;" visible="false">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #9d3039;">
+               <children>
+                  <Label layoutX="322.0" layoutY="14.0" text="Черный список" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <TableView fx:id="table_block" layoutY="50.0" prefHeight="600.0" prefWidth="750.0">
+              <columns>
+                <TableColumn fx:id="col_block_IdAccount" prefWidth="75.0" text="ID аккаунта" />
+                  <TableColumn fx:id="col_block_reason" prefWidth="400.0" text="Кем заблокирован" />
+                  <TableColumn fx:id="col_block_DateBlock" prefWidth="140.0" text="Дата блокировки" />
+                  <TableColumn fx:id="col_block_button" prefWidth="140.0" text="Разблокировать" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="block_registration_admin" layoutX="200.0" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: #cc434c;" visible="false">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: #9d3039;">
+               <children>
+                  <Label layoutX="273.0" layoutY="14.0" text="Регистрация администратора" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="92.0" layoutY="140.0" prefHeight="370.0" prefWidth="590.0" styleClass="box_groupe">
+               <children>
+                  <TextField fx:id="in_regAdminName" layoutX="33.0" layoutY="42.0" prefHeight="27.0" prefWidth="230.0" promptText="Введите имя администратора" />
+                  <TextField fx:id="in_regAdminSurname" layoutX="33.0" layoutY="83.0" prefHeight="27.0" prefWidth="230.0" promptText="Введите фамилию администратора" />
+                  <TextField fx:id="in_regAdminPatronymic" layoutX="33.0" layoutY="123.0" prefHeight="27.0" prefWidth="230.0" promptText="Введите отчество администратора" />
+                  <TextField fx:id="in_regAdminPhone" layoutX="327.0" layoutY="42.0" prefHeight="27.0" prefWidth="230.0" promptText="Введите номер телефона администратора" />
+                  <TextField fx:id="in_regAdminLogin" editable="false" layoutX="327.0" layoutY="83.0" prefHeight="27.0" prefWidth="230.0" promptText="Придумайте логин администратора">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></TextField>
+                  <TextField fx:id="in_regAdminPassword" editable="false" layoutX="327.0" layoutY="123.0" prefHeight="27.0" prefWidth="230.0" promptText="Придумайте пароль администратора">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></TextField>
+                  <TextField fx:id="in_regAdminIDpassport" layoutX="33.0" layoutY="181.0" prefHeight="27.0" prefWidth="530.0" promptText="Введите ID паспорта" />
+                  <TextField fx:id="in_regAdminSeriaNumber" layoutX="33.0" layoutY="225.0" prefHeight="27.0" prefWidth="530.0" promptText="Введите серию номер паспорта" />
+                  <Button fx:id="but_regAdmin" graphicTextGap="16.0" layoutX="225.0" layoutY="285.0" mnemonicParsing="false" text="Регистрация">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SAVE" size="20" />
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

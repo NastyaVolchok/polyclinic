@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="535.0" prefWidth="600.0" style="-fx-background-color: #cc434c;" stylesheets="@../static/style/stylesheets.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistratironParientController">
+   <children>
+      <AnchorPane prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #f45d45;">
+         <children>
+            <Label layoutX="14.0" layoutY="11.0" prefHeight="27.0" prefWidth="400.0" styleClass="label_header" text="Регистрация личного кабинета в поликлинике" textFill="WHITE" />
+            <Button fx:id="but_returnComeBack" layoutX="542.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="49.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ARROW_CIRCLE_LEFT" size="30" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="17.0" layoutY="65.0" prefHeight="250.0" prefWidth="566.0" styleClass="box_groupe">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="566.0" styleClass="box_groupe_second">
+               <children>
+                  <Label layoutX="193.0" layoutY="11.0" prefHeight="27.0" prefWidth="180.0" styleClass="label_header" text="Личная информация" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <TextField fx:id="input_name" layoutX="14.0" layoutY="60.0" prefHeight="27.0" prefWidth="248.0" promptText="Введите ваше имя" />
+            <TextField fx:id="input_surnamr" layoutX="14.0" layoutY="97.0" prefHeight="27.0" prefWidth="248.0" promptText="Введите вашу фамилию" />
+            <TextField fx:id="input_patronymic" layoutX="14.0" layoutY="133.0" prefHeight="27.0" prefWidth="248.0" promptText="Введите ваше отчество" />
+            <TextField fx:id="input_phone" layoutX="14.0" layoutY="169.0" prefHeight="27.0" prefWidth="248.0" promptText="Введите ваш номер телефона" />
+            <TextField fx:id="input_date_registration" editable="false" layoutX="304.0" layoutY="169.0" prefHeight="27.0" prefWidth="248.0" promptText="Дата регистрации">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></TextField>
+            <TextField fx:id="input_password" layoutX="304.0" layoutY="133.0" prefHeight="27.0" prefWidth="248.0" promptText="Придумайте ваш пароль" />
+            <TextField fx:id="input_login" layoutX="304.0" layoutY="97.0" prefHeight="27.0" prefWidth="248.0" promptText="Придумайте ваш логин" />
+            <TextField fx:id="input_dateBirth" layoutX="304.0" layoutY="60.0" prefHeight="27.0" prefWidth="248.0" promptText="Введите вашу дату рождения" />
+            <RadioButton fx:id="radio_men" layoutX="304.0" layoutY="219.0" mnemonicParsing="false" selected="true" text="Муж" />
+            <RadioButton fx:id="radio_women" layoutX="237.0" layoutY="219.0" mnemonicParsing="false" text="Жен" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="16.0" layoutY="337.0" prefHeight="120.0" prefWidth="566.0" styleClass="box_groupe">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="566.0" styleClass="box_groupe_second">
+               <children>
+                  <Label layoutX="195.0" layoutY="10.0" prefHeight="27.0" prefWidth="180.0" styleClass="label_header" text="Паспортные данные" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <TextField fx:id="input_idPassport" layoutX="11.0" layoutY="65.0" prefHeight="27.0" prefWidth="248.0" promptText="Введите ID паспорта" />
+            <TextField fx:id="input_serianumber" layoutX="304.0" layoutY="65.0" prefHeight="27.0" prefWidth="248.0" promptText="Введите серию номер паспорта" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="but_registration" layoutX="219.0" layoutY="480.0" mnemonicParsing="false" text="Зарегистрироваться" />
+   </children>
+</AnchorPane>

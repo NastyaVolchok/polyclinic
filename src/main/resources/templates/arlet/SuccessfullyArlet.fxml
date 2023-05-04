@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="200.0" prefWidth="358.0" style="-fx-background-color: white;" stylesheets="@../../static/style/stylesheets.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SuccessfullyArletController">
+   <children>
+      <AnchorPane prefHeight="50.0" prefWidth="380.0" style="-fx-background-color: #f45d45;">
+         <children>
+            <Button fx:id="but_close" layoutX="327.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="49.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TIMES_CIRCLE" size="30" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="137.0" layoutY="92.0" text="Successfully">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView fill="LIME" glyphName="CHECK" layoutX="21.0" layoutY="153.0" selectionEnd="0" size="100" />
+   </children>
+</AnchorPane>
